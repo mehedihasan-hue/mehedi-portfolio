@@ -2089,3 +2089,36 @@ button:focus-visible {
         animation: none;
     }
 }
+@media (prefers-reduced-motion: reduce) {
+    .system-hud,
+    .hud-indicator {
+        animation: none;
+    }
+}
+/* MOBILE PARTICLE VISIBILITY FIX */
+
+#particles {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.particle {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 0.8 !important;
+    animation-play-state: running !important;
+    will-change: transform, opacity;
+}
+
+@media (max-width: 600px) {
+    #particles {
+        display: block !important;
+    }
+
+    .particle {
+        opacity: 0.7 !important;
+    }
+}
