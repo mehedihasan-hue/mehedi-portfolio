@@ -12,6 +12,47 @@
 </head>
 
 <body>
+    
+<!-- SYSTEM AWAKENING INTRO -->
+
+<div id="awakening-screen">
+
+    <div class="awakening-glow"></div>
+
+    <div class="awakening-portal">
+        <div class="portal-ring ring-one"></div>
+        <div class="portal-ring ring-two"></div>
+        <div class="portal-core"></div>
+    </div>
+
+    <div class="awakening-content">
+
+        <p class="awakening-label">
+            SYSTEM INITIALIZING
+        </p>
+
+        <h1 id="awakening-title">
+            UNKNOWN
+        </h1>
+
+        <p id="awakening-message">
+            SCANNING PLAYER IDENTITY...
+        </p>
+
+        <div class="awakening-loader">
+            <span></span>
+        </div>
+
+    </div>
+
+    <button id="skip-awakening">
+        SKIP INTRO →
+    </button>
+
+</div>
+
+<!-- END SYSTEM AWAKENING -->
+
 
     <!-- Background Effects -->
     <div class="background-effects">
@@ -243,7 +284,14 @@
                 <span>HTML</span>
                 <span>CSS</span>
             </div>
+            <div class="quest-progress-info">
+    <span>QUEST PROGRESS</span>
+    <span>100%</span>
+</div>
 
+<div class="quest-progress-track">
+    <div class="quest-progress-fill" style="width: 100%"></div>
+</div>
             <div class="quest-status">
                 <span>STATUS</span>
                 <span class="completed">COMPLETED</span>
@@ -274,7 +322,14 @@
                 <span>Java</span>
                 <span>OOP</span>
             </div>
+<div class="quest-progress-info">
+    <span>QUEST PROGRESS</span>
+    <span>IN PROGRESS</span>
+</div>
 
+<div class="quest-progress-track">
+    <div class="quest-progress-fill" style="width: 50%"></div>
+</div>
             <div class="quest-status">
                 <span>STATUS</span>
                 <span class="learning">LEARNING</span>
@@ -305,7 +360,14 @@
                 <span>C++</span>
                 <span>OOP</span>
             </div>
+<div class="quest-progress-info">
+    <span>QUEST PROGRESS</span>
+    <span>100%</span>
+</div>
 
+<div class="quest-progress-track">
+    <div class="quest-progress-fill" style="width: 100%"></div>
+</div>
             <div class="quest-status">
                 <span>STATUS</span>
                 <span class="completed">COMPLETED</span>
@@ -377,5 +439,48 @@
 
     </main>
 <script src="js/script.js"></script>
+
+
+<!-- DYNAMIC SYSTEM HUD -->
+
+<div class="system-hud" id="system-hud">
+
+    <div class="hud-header">
+        <span class="hud-indicator"></span>
+        SYSTEM STATUS
+        <span class="hud-version">V1.0</span>
+    </div>
+
+    <div class="hud-divider"></div>
+
+    <div class="hud-info">
+        <span>PLAYER</span>
+        <strong>MEHEDI</strong>
+    </div>
+
+    <div class="hud-info">
+        <span>RANK</span>
+        <strong class="hud-rank">DEVELOPER</strong>
+    </div>
+
+    <div class="hud-info">
+        <span>SYSTEM</span>
+        <strong class="hud-online">ONLINE</strong>
+    </div>
+
+    <div class="hud-info">
+        <span>LOCAL TIME</span>
+        <strong id="hud-clock">00:00:00</strong>
+    </div>
+
+    <div class="hud-footer">
+        <span>PLAYER DATA VERIFIED</span>
+        <span>●</span>
+    </div>
+
+</div>
+
+
+<!-- END SYSTEM HUD -->
 </body>
 </html>

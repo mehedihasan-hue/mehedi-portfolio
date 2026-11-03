@@ -1,4 +1,5 @@
 
+
 // Select Particle Container
 const particleContainer = document.getElementById("particles");
 
@@ -6,34 +7,31 @@ const particleContainer = document.getElementById("particles");
 const particleCount = 35;
 
 // Create Particles
-for (let i = 0; i < particleCount; i++) {
+if (particleContainer) {
 
-    // Create New HTML Element
-    const particle = document.createElement("span");
+    for (let i = 0; i < particleCount; i++) {
 
-    // Add CSS Class
-    particle.classList.add("particle");
+        const particle = document.createElement("span");
 
-    // Random Horizontal Position
-    particle.style.left = Math.random() * 100 + "%";
+        particle.classList.add("particle");
 
-    // Random Animation Speed
-    particle.style.animationDuration =
-        (5 + Math.random() * 8) + "s";
+        particle.style.left = Math.random() * 100 + "%";
 
-    // Random Starting Time
-    particle.style.animationDelay =
-        (Math.random() * 8) + "s";
+        particle.style.animationDuration =
+            (5 + Math.random() * 8) + "s";
 
-    // Random Size
-    const size = 2 + Math.random() * 3;
+        particle.style.animationDelay =
+            (Math.random() * 8) + "s";
 
-    particle.style.width = size + "px";
-    particle.style.height = size + "px";
+        const size = 2 + Math.random() * 3;
 
-    // Add Particle to Website
-    particleContainer.appendChild(particle);
+        particle.style.width = size + "px";
+        particle.style.height = size + "px";
+
+        particleContainer.appendChild(particle);
+    }
 }
+
 
 // SYSTEM NOTIFICATION
 
@@ -54,33 +52,176 @@ if (notification) {
 }
 
 
-// SCROLL REVEAL
 
-const revealElements = document.querySelectorAll(
-    ".about-section, .skills-section, .projects-section, .contact-section"
-);
+/* ADVANCED SCROLL REVEAL */
 
-revealElements.forEach((element) => {
+const revealElements = document.querySelectorAll(`
+    .about-section,
+    .about-card,
+    .skills-section,
+    .skill-card,
+    .projects-section,
+    .project-card,
+    .contact-section,
+    .contact-card
+`);
+
+revealElements.forEach(element => {
     element.classList.add("reveal");
 });
 
 const observer = new IntersectionObserver((entries) => {
-
-    entries.forEach((entry) => {
-
+    entries.forEach(entry => {
         if (entry.isIntersecting) {
-
             entry.target.classList.add("active");
-
             observer.unobserve(entry.target);
         }
-
     });
-
 }, {
     threshold: 0.15
 });
 
-revealElements.forEach((element) => {
+revealElements.forEach(element => {
     observer.observe(element);
 });
+
+/* =================================
+   SYSTEM AWAKENING JAVASCRIPT
+================================= */
+
+const awakeningScreen = document.getElementById("awakening-screen");
+const awakeningTitle = document.getElementById("awakening-title");
+const awakeningMessage = document.getElementById("awakening-message");
+const skipAwakening = document.getElementById("skip-awakening");
+
+let awakeningFinished = false;
+let awakeningTimers = [];
+
+function finishAwakening() {
+
+    if (awakeningFinished) return;
+
+    awakeningFinished = true;
+
+    // Stop pending messages
+    awakeningTimers.forEach(clearTimeout);
+
+    // Create Blue Shockwave
+    const shockwave = document.createElement("div");
+    shockwave.classList.add("awakening-shockwave");
+    awakeningScreen.appendChild(shockwave);
+
+    // Create Blue Screen Flash
+    const flash = document.createElement("div");
+    flash.classList.add("awakening-flash");
+    document.body.appendChild(flash);
+
+    // Remove Flash
+    setTimeout(() => {
+        flash.remove();
+    }, 750);
+
+    // Exit animation
+    awakeningScreen.classList.add("awakening-exit");
+
+    // Remove intro after shockwave animation
+    setTimeout(() => {
+        awakeningScreen.remove();
+    }, 1100);
+}
+
+function scheduleAwakening(callback, delay) {
+
+    const timer = setTimeout(() => {
+        if (!awakeningFinished) {
+            callback();
+        }
+    }, delay);
+
+    awakeningTimers.push(timer);
+}
+
+if (awakeningScreen && awakeningTitle && awakeningMessage) {
+
+    // Initial System Message
+    awakeningTitle.textContent = "UNKNOWN";
+    awakeningMessage.textContent = "SCANNING PLAYER IDENTITY...";
+
+    scheduleAwakening(() => {
+        awakeningMessage.textContent = "IDENTITY DETECTED";
+    }, 900);
+
+    scheduleAwakening(() => {
+        awakeningTitle.textContent = "PLAYER";
+        awakeningMessage.textContent = "PLAYER IDENTIFIED";
+    }, 1700);
+
+    scheduleAwakening(() => {
+        awakeningTitle.textContent = "MEHEDI";
+        awakeningMessage.textContent = "WELCOME TO YOUR DIGITAL WORLD";
+    }, 2600);
+
+    scheduleAwakening(() => {
+        awakeningMessage.textContent = "SYSTEM AWAKENING COMPLETE";
+    }, 3400);
+
+    // Unlock Portfolio
+    scheduleAwakening(() => {
+        finishAwakening();
+    }, 4300);
+
+    // Skip Intro
+    if (skipAwakening) {
+        skipAwakening.addEventListener("click", finishAwakening);
+    }
+
+}
+/* =================================
+   DYNAMIC SYSTEM HUD
+================================= */
+
+
+
+const systemHud = document.getElementById("system-hud");
+
+if (systemHud) {
+
+    const onlineStatus = systemHud.querySelector(".hud-online");
+    const indicator = systemHud.querySelector(".hud-indicator");
+    const footer = systemHud.querySelector(".hud-footer span:first-child");
+
+    if (onlineStatus) {
+        onlineStatus.textContent = "ONLINE";
+    }
+
+    if (indicator) {
+        indicator.style.background = "#38bdf8";
+    }
+
+    if (footer) {
+        footer.textContent = "SYSTEM ACTIVE";
+    }
+}
+
+
+/* LIVE SYSTEM CLOCK */
+
+function updateHudClock() {
+
+    const clockElement = document.getElementById("hud-clock");
+
+    if (!clockElement) return;
+
+    const currentTime = new Date();
+
+    clockElement.textContent =
+        currentTime.toLocaleTimeString("en-GB", {
+            hour12: false
+        });
+}
+
+// Update immediately
+updateHudClock();
+
+// Update every second
+setInterval(updateHudClock, 1000);
