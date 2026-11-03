@@ -17,6 +17,8 @@ if (particleContainer) {
 
         particle.style.left = Math.random() * 100 + "%";
 
+        particle.style.top = Math.random() * 100 + "%";
+
         particle.style.animationDuration =
             (5 + Math.random() * 8) + "s";
 
